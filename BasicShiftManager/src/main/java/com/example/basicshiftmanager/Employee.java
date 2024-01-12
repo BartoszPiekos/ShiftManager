@@ -20,7 +20,7 @@ public class Employee {
     private Date birthDate;
     private float monthlyHours;
     private Shift[] employeeShiftPlan = new Shift[31];
-    private String data;
+
 
     public Employee(String id, String firstName, String lastName, String pesel, String city, String address, String post, Date birthDate) {
         this.id = id;

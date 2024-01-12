@@ -238,13 +238,11 @@ public class HelloApplication extends Application {
         Stage dialogStage = new Stage();
         dialogStage.setTitle("Edytuj zmianę");
 
-        // Utwórz Spinners dla godzin i minut
         Spinner<Integer> startHourSpinner = new Spinner<>();
         Spinner<Integer> startMinuteSpinner = new Spinner<>();
         Spinner<Integer> endHourSpinner = new Spinner<>();
         Spinner<Integer> endMinuteSpinner = new Spinner<>();
 
-        // Ustaw zakres wartości dla Spinners
         startHourSpinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 23, shift.getStartHour()));
         startMinuteSpinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 59, shift.getStartMinute()));
         endHourSpinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 23, shift.getEndHour()));
@@ -280,13 +278,12 @@ public class HelloApplication extends Application {
             }
         });
 
-        // Przyciski
         Button cancelButton = new Button("Anuluj");
         Button confirmButton = new Button("Zatwierdź");
 
         cancelButton.setOnAction(event -> dialogStage.close());
         confirmButton.setOnAction(event -> {
-            // Pobierz wartości ze Spinners
+
             int startHour = startHourSpinner.getValue();
             int startMinute = startMinuteSpinner.getValue();
             int endHour = endHourSpinner.getValue();
@@ -310,22 +307,22 @@ public class HelloApplication extends Application {
         String fileName = employee.getFirstName() + employee.getLastName() + employee.getId() + ".txt";
         List<String> lines = new ArrayList<>();
         try {
-            // Sprawdź, czy plik istnieje, i odczytaj jego zawartość
+
             if (Files.exists(Paths.get(fileName))) {
                 lines = Files.readAllLines(Paths.get(fileName));
             }
 
-            // Uzupełnij listę pustymi liniami, jeśli jest krótsza niż 31 linii
+
             while (lines.size() < 31) {
                 lines.add("\t\t\t");
             }
 
-            // Zaktualizuj odpowiednią linię
+
             int dayIndex = dayOfMonth-1; // Dzień 1 ma indeks 0 w liście
             String shiftData = String.format("%d\t%d\t%d\t%d", shift.getStartHour(), shift.getStartMinute(), shift.getEndHour(), shift.getEndMinute());
             lines.set(dayIndex, shiftData);
 
-            // Zapisz zaktualizowane dane do pliku
+
             Files.write(Paths.get(fileName), lines);
         } catch (IOException e) {
             e.printStackTrace();
@@ -408,8 +405,8 @@ public class HelloApplication extends Application {
 
         centerContainer.getChildren().addAll(table);
 
-        // Załadowanie danych (przykład załadowania z listy wczytanej wcześniej)
-        data.addAll(employees); // listaWczytanychPracownikow powinna być listą obiektów Employee wczytaną z pliku
+
+        data.addAll(employees);
         table.setItems(data);
         addingContainer.getChildren().add(table);
 
@@ -426,13 +423,13 @@ public class HelloApplication extends Application {
         centerContainer.setCenter(addingContainer);
 
         Label idLabel = new Label("ID");
-        Label firstNameLabel = new Label("First Name");
-        Label lastNameLabel = new Label("Last Name");
-        Label peselLabel = new Label("PESEL Code");
-        Label cityLabel = new Label("City");
-        Label addressLabel = new Label("Address");
-        Label postLabel = new Label("Post code");
-        Label birthdateLabel = new Label("Birthday");
+        Label firstNameLabel = new Label("Imię");
+        Label lastNameLabel = new Label("Nazwisko");
+        Label peselLabel = new Label("PESEL");
+        Label cityLabel = new Label("Miasto");
+        Label addressLabel = new Label("Adres");
+        Label postLabel = new Label("Kod pocztowy");
+        Label birthdateLabel = new Label("Data urodzenia");
 
         TextField id = new TextField();
         TextField firstName = new TextField();
@@ -445,7 +442,7 @@ public class HelloApplication extends Application {
         birthDate.setEditable(false);
 
         Button addButton = new Button("OK");
-        Button backButton = new Button("Back");
+        Button backButton = new Button("Cofnij");
         backButton.setOnAction(e->showEmployees());
 
             addButton.setOnAction(e -> addToList(id, firstName, lastName, pesel, city, address, post, birthDate));

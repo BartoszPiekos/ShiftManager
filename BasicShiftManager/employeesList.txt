@@ -101,3 +101,4 @@
 101	Maciej	Klanowicz	00230306453	Rzeszów	Cieplińskiego 44	39-002	03-03-2000
 102	Julia	Pęcherz	02212105435	Bydgoiszcz	Szybka 12	32-043	24-01-2002
 103	Bartłomiej	Wicek	0033452355	Dębica	Sokola 17	39-200	10-06-2000
+U1	Joachim	Kowalski	01220201154	Jasionka	Jasionka 441	36-002	02-02-2001
